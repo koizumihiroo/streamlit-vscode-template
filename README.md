@@ -79,3 +79,9 @@ streamlit run src/main.py
 ```
 
 ## Run in docker
+
+```sh
+docker-compose build
+docker-compose up --build
+# access 127.0.0.1:8501
+```

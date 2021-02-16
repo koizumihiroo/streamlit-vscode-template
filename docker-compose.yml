@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    build: 
+      context: .
+      target: ${STAGE:-prod}
+    image: "streamlit-template-${STAGE:-prod}"
+    container_name: "streamlit-template-${STAGE:-prod}"
+    volumes:
+      - ./src:/work/src
+    ports:
+      - "8501:8501"
+    restart: always
+    command: ["streamlit", "run", "main.py"]
