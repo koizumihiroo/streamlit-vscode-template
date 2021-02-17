@@ -4,8 +4,8 @@ services:
   app:
     build:
       context: .
-      target: ${STAGE:-dev}
-    image: "streamlit-template-${STAGE:-dev}"
+      target: prod
+    image: "streamlit-template-prod"
     volumes:
       - ./src:/work/src
     ports:

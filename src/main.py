@@ -1,10 +1,13 @@
-import streamlit as st
-import pandas as pd
+import urllib.error
+
 import altair as alt
+import pandas as pd
+import streamlit as st
 
 # This code is mainly copied from `streamlit hello` DataFrame demo.
 
-@st.cache
+
+@st.cache()
 def get_UN_data():
     AWS_BUCKET_URL = "https://streamlit-demo-data.s3-us-west-2.amazonaws.com"
     df = pd.read_csv(AWS_BUCKET_URL + "/agri.csv.gz")
@@ -52,3 +55,7 @@ except urllib.error.URLError as e:
     """
         % e.reason
     )
+
+
+def dummy() -> int:
+    return 0
