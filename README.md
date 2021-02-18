@@ -55,7 +55,7 @@ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poet
 ```
 
 ```sh
-poetry config virtualenvs.in-project true
+poetry config --local virtualenvs.in-project true
 poetry init
 # Would you like to define your main dependencies interactively? (yes/no) no
 # Would you like to define your development dependencies interactively? (yes/no) [yes] no
@@ -115,6 +115,9 @@ To solve pyhon path for vscode typing check by pyglance (pyright), you need to w
 ## Run streamlit demo
 
 ```sh
+# only when pulling this repository first time
+pyenv install $PY_VERSION # $PY_VERSON=3.8.7 
+
 poetry install # only when package is added or updated
 poetry shell
 streamlit hello
