@@ -16,6 +16,27 @@ For developing, those packages are introduced and see `./vscode/settings.json` f
 
 (Surely) Install [Visual Studio Code](https://code.visualstudio.com/download)
 
+
+<details markdown="1">
+<summary><code>vscode</code></summary>
+
+To solve pyhon path for vscode typing check by pyglance (pyright), you need to write this into `./pyrightconfig.json`. See details in https://github.com/microsoft/pyright/blob/master/docs/configuration.md#sample-config-file
+
+```json
+{
+  "include": [
+    "src"
+  ],
+  "executionEnvironments": [
+    {
+      "root": "src"
+    }
+  ]
+}
+```
+
+</details>
+
 <details markdown="1">
 <summary>set <code>pyenv</code></summary>
 
@@ -76,50 +97,64 @@ poetry install
 ## File structures
 
 ```sh
+# tree -aL 2
 .
-├── .dockerignore      # for docker
-├── .gitignore         # for git
-├── .python-version    # specify python version by pyenv
 ├── .vscode
 │   ├── extensions.json # recommendation of extensions
 │   └── settings.json # linting and formatting settings
-├── Dockerfile         # for docker
-├── README.md          # this file
+├── src
+│   └── main.py       # entry point for streamlit
+├── tests
+│   ├── __init__.py
+│   └── test_calc.py   # test example
+├── .dockerignore      # for docker
+├── .gitignore         # for git
+├── .python-version    # specify python version by pyenv
 ├── docker-compose.yml # for docker
+├── Dockerfile         # for docker
 ├── poetry.lock        # for poetry
+├── poetry.toml        # for poetry
 ├── pyproject.toml     # for poetry
 ├── pyrightconfig.json # for VS Code pyright
 ├── pytest.ini         # for pytest
-├── src
-│   └── main.py       # entry point for streamlit
-└── tests
-    ├── __init__.py
-    └── test_calc.py   # test example
+└── README.md          # this file
+
 ```
 
-To solve pyhon path for vscode typing check by pyglance (pyright), you need to write this into `./pyrightconfig.json`. See details in https://github.com/microsoft/pyright/blob/master/docs/configuration.md#sample-config-file
+## First step from git clone
 
-```json
-{
-  "include": [
-    "src"
-  ],
-  "executionEnvironments": [
-    {
-      "root": "src"
-    }
-  ]
-}
+```sh
+# DO this not in the vscode terminal, just in your console
+# cd your-working-directory
+git clone https://github.com/koizumihiroo/streamlit-vscode-template.git
+cd streamlit-vscode-template
+# only when pulling this repository first time
+pyenv install $PY_VERSION # $PY_VERSON=3.8.7 
+poetry install
+# open vscode 
+code .
+```
+
+In the bottom bar of vscode, please select `./.venv/bin/python` when showing `Select Python Interepter` warning
+
+In the vscode terminal, confirm the python path
+
+```sh
+poetry shell
+which python
+/your-working-directory/streamlit-vscode-template/.venv/bin/python
+```
+
+Check if `pytest` runs completely
+
+```sh
+pytest
 ```
 
 ## Run streamlit demo
 
 ```sh
-# only when pulling this repository first time
-pyenv install $PY_VERSION # $PY_VERSON=3.8.7 
-
-poetry install # only when package is added or updated
-poetry shell
+# poetry shell
 streamlit hello
 # See left side bar, select DataFrame demo, then code will be shown in main panel.
 ```
@@ -127,7 +162,7 @@ streamlit hello
 ## Run own code in local
 
 ```sh
-poetry shell
+# poetry shell
 streamlit run src/main.py 
 # access 127.0.0.1:8501
 ```
@@ -146,5 +181,6 @@ docker-compose up --build
 ## Test
 
 ```sh
+# poetry shell
 pytest
 ```
