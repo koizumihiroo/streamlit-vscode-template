@@ -124,7 +124,7 @@ poetry install
 ## First step from git clone
 
 ```sh
-# DO this not in the vscode terminal, just in your console
+# DO this *NOT* in the vscode terminal, just in your default terminal
 # cd your-working-directory
 git clone https://github.com/koizumihiroo/streamlit-vscode-template.git
 cd streamlit-vscode-template
@@ -135,7 +135,11 @@ poetry install
 code .
 ```
 
+### Select vscode python interepter
+
 In the bottom bar of vscode, please select `./.venv/bin/python` when showing `Select Python Interepter` warning
+
+Because vscode no-more provide `python.pythonPath` in your local settings, you need to manually select the python path. see 
 
 In the vscode terminal, confirm the python path
 
