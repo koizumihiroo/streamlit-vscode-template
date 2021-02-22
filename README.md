@@ -137,13 +137,16 @@ code .
 
 ### Select vscode python interepter
 
-In the bottom bar of vscode, please select `./.venv/bin/python` when showing `Select Python Interepter` warning
+Firstly, reset your python path setting by typing `python: clear workspace interpretter setting` in opening command palette `F1`
 
-Because vscode no-more provide `python.pythonPath` in your local settings, you need to manually select the python path. see 
+![](docs/clear-interpreter.png)
 
-In the vscode terminal, confirm the python path
+Then, in the bottom bar of vscode, select `./.venv/bin/python` when showing `Select Python Interepter` warning.
+
+Because vscode no-more provide `python.pythonPath` in your local settings, you need to manually select the python path. see https://github.com/microsoft/vscode-python/wiki/AB-Experiments
 
 ```sh
+# Select Python Interepter !!
 poetry shell
 which python
 /your-working-directory/streamlit-vscode-template/.venv/bin/python
