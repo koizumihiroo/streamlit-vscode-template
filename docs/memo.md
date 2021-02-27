@@ -34,3 +34,21 @@ To solve pyhon path for vscode typing check by pyglance (pyright), you need to w
   ]
 }
 ```
+
+## pytest
+
+Add this into .pyproject.toml by hand
+
+```ini
+# see https://docs.pytest.org/en/stable/customize.html#pyproject-toml
+[tool.pytest.ini_options]
+addopts = "-ra -q"
+# see https://docs.pytest.org/en/stable/warnings.html#deprecationwarning-and-pendingdeprecationwarning
+filterwarnings = [
+    'ignore:.*np.* is a deprecated alias:DeprecationWarning',
+]
+testpaths = "."
+python_files = "test_*.py"
+python_classes = "Test"
+python_functions = "test_"
+```

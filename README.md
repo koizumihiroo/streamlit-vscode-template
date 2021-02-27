@@ -13,7 +13,7 @@ Those python's linting and formating packages are installed by poetry dev depend
 - autopep8
 - isort
 
-Within the vscode terminal, .venv environment `poetry shell` is automatically by `"python.terminal.activateEnvInCurrentTerminal": true` in `./vscode/settings.json`
+Within the vscode terminal, .venv environment is recognized by `poetry shell` and adding package is done by `poetry add {package-name}` instead of `pip install {package-name}`.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ Within the vscode terminal, .venv environment `poetry shell` is automatically by
 
 ### Install pyenv
 
-On Mac OS (with Iintel CPU is assumed), use `brew install`. On other OSs, see [official site installation](https://github.com/pyenv/pyenv#installation)
+On Mac OS (with Intel CPU is assumed), use `brew install`. On other OSs, see [official site installation](https://github.com/pyenv/pyenv#installation)
 
 ```sh
 YOUR_SHELL_STARTUP_CONFIG="~/.`echo $SHELL | cut -f 3 -d '/'`rc"
@@ -102,9 +102,19 @@ code .
 
 This operation requires only when opening this repository (vscode directory) first time.
 
-Open command palette by typing `F1` in your keyboard and enter `python: clear workspace interpretter setting` to reset your existing python path.
+When opening vscode, the bottom-right popup message shows like below. Select `Yes`
 
-![command palette](docs/clear-interpreter.png)
+![found python](docs/images/found-py-environment.png)
+
+Then, bottom-left bar shows `! Select Python Interprer`, click it, and select `./.venv/bin/python`
+
+![select python](docs/images/select-python.png)
+![select python](docs/images/select-local-python.png)
+
+
+If above operations are not reproducible, open command palette by typing `F1` in your keyboard and enter `python: clear workspace interpretter setting` to reset your existing python path.
+
+![command palette](docs/images/clear-interpreter.png)
 
 Then, in the bottom bar of vscode, select `./.venv/bin/python`.
 
@@ -115,7 +125,10 @@ In the vscode terminal, confirm the python path:
 ```sh
 poetry shell
 which python
-/your-working-directory/streamlit-vscode-template/.venv/bin/python
+# {your-working-directory}/streamlit-vscode-template/.venv/bin/python
+
+$ poetry env list
+# .venv (Activated)
 ```
 
 Check if `pytest` runs completely
