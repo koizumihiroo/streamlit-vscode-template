@@ -23,7 +23,7 @@ Within the vscode terminal, .venv environment `poetry shell` is automatically by
 
 ### Install pyenv
 
-On Mac OS (with Iintel CPU is assumed), use `brew install`. On other OSs, see [official site installation](https://github.com/pyenv/pyenv#installation)
+On Mac OS (with Intel CPU is assumed), use `brew install`. On other OSs, see [official site installation](https://github.com/pyenv/pyenv#installation)
 
 ```sh
 YOUR_SHELL_STARTUP_CONFIG="~/.`echo $SHELL | cut -f 3 -d '/'`rc"
@@ -115,7 +115,7 @@ In the vscode terminal, confirm the python path:
 ```sh
 poetry shell
 which python
-/your-working-directory/streamlit-vscode-template/.venv/bin/python
+{your-working-directory}/streamlit-vscode-template/.venv/bin/python
 ```
 
 Check if `pytest` runs completely
