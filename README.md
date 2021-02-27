@@ -13,7 +13,7 @@ Those python's linting and formating packages are installed by poetry dev depend
 - autopep8
 - isort
 
-Within the vscode terminal, .venv environment `poetry shell` is automatically by `"python.terminal.activateEnvInCurrentTerminal": true` in `./vscode/settings.json`
+Within the vscode terminal, .venv environment is recognized by `poetry shell` and adding package is done by `poetry add {package-name}` instead of `pip install {package-name}`.
 
 ## Prerequisites
 
